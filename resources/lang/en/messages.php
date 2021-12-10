@@ -841,7 +841,7 @@ return [
     'trusted_by_restaurant'=>'Restaurant Owner',
     'contact_us'=>'Contact Us',
     'footer_article'=>'Footer Article',
-    'home'=>'Home',
+    'home'=>'mohammad',
     'support'=>'Support',
     'browse_web'=>'Browse Web',
     'no'=>'No',
