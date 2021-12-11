@@ -60,7 +60,7 @@ class RestaurantLogic
         $paginator = Restaurant::selectRaw('*, IF((opening_time < "'.now()->format('H:i').'" and closeing_time > "'.now()->format('H:i').'"), true, false) as open')
         ->with(['discount'=>function($q){
             return $q->validate();
-        }])->where('store_id', $zone_id)->where('zone_id', $zone_id)
+        }])->where('zone_id', $zone_id)
         ->Active()
         ->withCount('orders')
         ->orderBy('orders_count', 'desc')
