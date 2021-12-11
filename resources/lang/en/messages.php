@@ -116,7 +116,7 @@ return [
     'currency_deleted_successfully'=>'Currency deleted successfully!',
     'current'=>'Current',
     'customer_not_found'=>'Customer not found!',
-    'dashboard' => 'Mohammed',
+    'dashboard' => 'Dashboard',
     'day_wise_report'=>'Day Wise Report',
     'food_wise_report'=>'Food Wise Report',
     'deleted'=>'deleted',
