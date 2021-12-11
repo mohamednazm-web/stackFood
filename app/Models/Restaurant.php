@@ -21,6 +21,7 @@ class Restaurant extends Model
         'delivery'=>'boolean',
         'take_away'=>'boolean',
         'zone_id'=>'integer',
+        'store_type_id'=>'integer',
         'food_section'=>'boolean',
         'reviews_section'=>'boolean',
         'active'=>'boolean',
@@ -72,6 +73,11 @@ class Restaurant extends Model
     public function zone()
     {
         return $this->belongsTo(Zone::class);
+    }
+
+    public function storeType()
+    {
+        return $this->belongsTo(StoreType::class, 'store_type_id');
     }
 
     public function campaigns()

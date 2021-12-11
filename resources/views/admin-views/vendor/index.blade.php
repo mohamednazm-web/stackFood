@@ -91,6 +91,17 @@
                                 </select>
                             </div>
                             <div class="form-group">
+                                <label class="input-label" for="choice_store_type">{{__('messages.store_type')}}<span
+                                        class="input-label-secondary" title="{{__('messages.select_store_type')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('messages.select_store_type')}}"></span></label>
+                                <select name="store_types_id" id="choice_store_type" required
+                                        class="form-control js-select2-custom"  data-placeholder="{{__('messages.select')}} {{__('messages.zone')}}">
+                                        <option value="" selected disabled>{{__('messages.select')}} {{__('messages.store_type')}}</option>
+                                    @foreach(\App\Models\StoreType::all() as $storeType)
+                                        <option value="{{$storeType->id}}">{{$storeType->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label class="input-label" for="latitude">{{__('messages.latitude')}}<span
                                         class="input-label-secondary" title="{{__('messages.restaurant_lat_lng_warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('messages.restaurant_lat_lng_warning')}}"></span></label>
                                 <input type="text" id="latitude"

@@ -155,9 +155,14 @@ Route::group(['namespace' => 'Api\V1'], function () {
         Route::get('get-restaurants/{filter_data}', 'RestaurantController@get_restaurants');
         Route::get('latest', 'RestaurantController@get_latest_restaurants');
         Route::get('popular', 'RestaurantController@get_popular_restaurants');
+        Route::get('popular', 'RestaurantController@get_popular_restaurants');
         Route::get('details/{id}', 'RestaurantController@get_details');
         Route::get('reviews', 'RestaurantController@reviews');
         Route::get('search', 'RestaurantController@get_searched_restaurants');
+    });
+
+    Route::group(['prefix' => 'electronics'], function () {
+        Route::get('popular', 'RestaurantController@get_popular_electronics');
     });
 
     Route::group(['prefix' => 'banners'], function () {

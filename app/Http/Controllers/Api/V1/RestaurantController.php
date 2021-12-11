@@ -61,6 +61,22 @@ class RestaurantController extends Controller
         return response()->json($restaurants['restaurants'], 200);
     }
 
+    public function get_popular_electronics(Request $request)
+    {
+        if (!$request->hasHeader('zoneId')) {
+            $errors = [];
+            array_push($errors, ['code' => 'zoneId', 'message' => 'Zone id is required!']);
+            return response()->json([
+                'errors' => $errors
+            ], 403);
+        }
+        $zone_id= $request->header('zoneId');
+        $restaurants = RestaurantLogic::get_popular_electronics($request['limit'], $request['offset'], $zone_id);
+        $restaurants['restaurants'] = Helpers::restaurant_data_formatting($restaurants['restaurants'], true);
+
+        return response()->json($restaurants['restaurants'], 200);
+    }
+
     public function get_details($id)
     {
         $restaurant = RestaurantLogic::get_restaurant_details($id);

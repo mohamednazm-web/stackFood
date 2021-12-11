@@ -1,0 +1,2 @@
+php artisan make:migration create_store_type_table
+php artisan make:migration add_store_type_id_to_restaurants_table --table=restaurants

@@ -60,7 +60,34 @@ class RestaurantLogic
         $paginator = Restaurant::selectRaw('*, IF((opening_time < "'.now()->format('H:i').'" and closeing_time > "'.now()->format('H:i').'"), true, false) as open')
         ->with(['discount'=>function($q){
             return $q->validate();
-        }])->where('zone_id', $zone_id)
+        }])->where([
+            ['zone_id', $zone_id],
+            ['store_types_id', 1]
+            ])
+        ->Active()
+        ->withCount('orders')
+        ->orderBy('orders_count', 'desc')
+        ->limit(50)
+        ->get();
+        // ->paginate($limit, ['*'], 'page', $offset);
+        /*$paginator->count();*/
+        return [
+            'total_size' => $paginator->count(),
+            'limit' => $limit,
+            'offset' => $offset,
+            'restaurants' => $paginator
+        ];
+    }
+
+    public static function get_popular_electronics($limit = 10, $offset = 1, $zone_id)
+    {
+        $paginator = Restaurant::selectRaw('*, IF((opening_time < "'.now()->format('H:i').'" and closeing_time > "'.now()->format('H:i').'"), true, false) as open')
+        ->with(['discount'=>function($q){
+            return $q->validate();
+        }])->where([
+            ['zone_id', $zone_id],
+            ['store_types_id', 2]
+            ])
         ->Active()
         ->withCount('orders')
         ->orderBy('orders_count', 'desc')
